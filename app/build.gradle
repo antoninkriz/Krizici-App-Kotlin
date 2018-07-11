@@ -10,8 +10,8 @@ android {
         applicationId "eu.antoninkriz.krizici"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 4
-        versionName "2.0 - 🅱️eltonova tur🅱️ína" // Contains "B button emoji", some IDEs can not display emojis
+        versionCode 5
+        versionName "2.1 - 🅱️eltonova tur🅱️ína 😂" // Contains "B button emoji", some IDEs can not display emojis
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
