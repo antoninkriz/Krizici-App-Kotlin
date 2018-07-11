@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewfragmentlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin" />
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/spinner"
+        android:layout_margin="@dimen/margin" >
+
+    </WebView>
+
+    <Button
+        android:id="@+id/buttonLoadSupl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/load_supl"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="229dp" />
+
+</RelativeLayout>

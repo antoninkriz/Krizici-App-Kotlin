@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Křižíci - skolakrizik.cz</string>
+    <string name="app_version">KOTLIN BUILD</string>
+
+    <string name="select_default_class">Zvolte třídu</string>
+    <string name="reload_webView">Znovu načíst obsah</string>
+
+    <string name="navigation_drawer_open">Otevřít navigaci</string>
+    <string name="navigation_drawer_close">Zavřít navigaci</string>
+
+    <string name="nav_supl">Suplování a rozvrhy</string>
+    <string name="nav_contacts">Kontakty</string>
+    <string name="nav_info">Informace</string>
+    <string name="nav_about">O Aplikaci</string>
+
+    <string name="reload_app">Zkusit znovu</string>
+    <string name="load_supl">Načíst suplování</string>
+
+    <string name="doubleclicktoexit">Stiskněte ještě jednou zpět pro ukončení</string>
+
+    <string name="aboutAuthor">Aplikaci vytvořil Antonín Kříž, 2018</string>
+    <string name="aboutApp">Neoficiální aplikace pro suplování a rozvrhy pro VOŠ a SPŠE Františka Křižíka</string>
+    <string name="aboutLicence">Aplikace je pod licencí MIT</string>
+    <string name="urlKrizik">Web školy: skolakrizik.cz</string>
+    <string name="urlAntoninKrizEu">Autor: antoninkriz.eu</string>
+    <string name="urlGithub">Zdrojový kód: github.com/tonakriz/krizici</string>
+
+    <string name="fragmentMain_toast_error">Nastala chyba načítání dat #1. Zkuste to znovu</string>
+    <string name="fragmentMain_toast_error2">Nastala chyba načítání dat #2. Zkuste to znovu</string>
+    <string name="fragmentAbout_toast_error">Nastala chyba při načítání informací. Zkuste to znovu</string>
+    <string name="fragmentView_toast_error">Nastala chyba při načítání rozvrhů. Zkuste to znovu</string>
+    <string name="fragmentView_webView_error">Nastala chyba při načítání. Zkuste to znovu</string>
+    <string name="fragmentView_selectItem">Zvolte položu</string>
+    <string name="fragmentContacts_writeMail">Napsat email…</string>
+    <string name="fragmentContacts_toast_error">Nastala chyba při načítání kontaktů. Zkuste to znovu</string>
+    <string name="fragmentContacts_json_error">Nastala chyba načítání kontaktů</string>
+
+    <string name="tab_supl">Suplování</string>
+    <string name="tab_classes">Třídy</string>
+    <string name="tab_teachers">Učitelé</string>
+    <string name="tab_classrooms">Učebny</string>
+
+    <string name="error_canNotConnect">Není možné navázat připojení k serveru</string>
+    <string name="error_failedDownload">Data nebylo možné stáhnout ze serveru</string>
+    <string name="error_noInternet">Zařízení není připojeno k internetu</string>
+    <string name="error_noInternetPermission">Nelze získat informace o připojení k internetu</string>
+    <string name="error_unknown">Nastala neznámá chyba</string>
+</resources>
