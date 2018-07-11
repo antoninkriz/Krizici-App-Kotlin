@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
@@ -49,23 +48,17 @@ class FragmentMain : Fragment() {
             var templist = ArrayList<String>()
 
             var jaArr = joObject.get("tridy").asArray()
-            for (v in jaArr) {
-                templist.add(v.asString())
-            }
+            jaArr.forEach { v -> templist.add(v.asString()) }
             list.add(templist)
             templist = ArrayList()
 
             jaArr = joObject.get("ucitele").asArray()
-            for (v in jaArr) {
-                templist.add(v.asString())
-            }
+            jaArr.forEach { v -> templist.add(v.asString()) }
             list.add(templist)
             templist = ArrayList()
 
             jaArr = joObject.get("ucebny").asArray()
-            for (v in jaArr) {
-                templist.add(v.asString())
-            }
+            jaArr.forEach { v -> templist.add(v.asString()) }
             list.add(templist)
         } catch (e: Exception) {
             e.printStackTrace()
