@@ -43,7 +43,7 @@ class FragmentMain : Fragment() {
         }
 
         try {
-            val joObject = Json.parse(json).asArray()[0].asObject()
+            val joObject = Json.parse(json).asObject()
 
             var templist = ArrayList<String>()
 

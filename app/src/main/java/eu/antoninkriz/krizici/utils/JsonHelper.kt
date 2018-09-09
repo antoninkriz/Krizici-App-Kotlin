@@ -6,16 +6,17 @@ import eu.antoninkriz.krizici.exceptions.network.FailedDownloadException
 object JsonHelper {
     enum class DOWNLOADFILE(val file: String) {
         TIMETABLES("json"),
-        CONTACTS("contacts")
+        CONTACTS("contacts"),
+        JWT("jwt")
     }
 
     @Throws(FailedDownloadException::class, UnknownException::class)
-    fun getJson(downloadfile: DOWNLOADFILE): String? {
+    fun getJson(downloadfile: DOWNLOADFILE, auth: String? = null, method: Network.METHOD = Network.METHOD.GET, data: String? = null): String? {
         val url = Consts.URL_SERVER_JSON.format(downloadfile.file)
-        val result = Network.downloadString(url)
+        val result = Network.downloader(url, method, data, auth, null)
 
         if (result.success) {
-            return result.result
+            return String(result.result ?: ByteArray(0))
         } else {
             if (result.exception != null) {
                 throw result.exception

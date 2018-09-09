@@ -15,7 +15,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import eu.antoninkriz.krizici.fragments.*
+import eu.antoninkriz.krizici.fragments.FragmentAbout
+import eu.antoninkriz.krizici.fragments.FragmentContacts
+import eu.antoninkriz.krizici.fragments.FragmentMain
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 

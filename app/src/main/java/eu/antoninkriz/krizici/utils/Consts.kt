@@ -4,7 +4,7 @@ object Consts {
     /**
      * Server timeout in milliseconds
      */
-    const val SERVER_TIMEOUT: Int = 3000
+    const val SERVER_TIMEOUT: Int = 10000
 
     /**
      * URL pointing to the 'supl' website
@@ -19,12 +19,12 @@ object Consts {
     /**
      * Template of URL pointing to the JSON files
      */
-    const val URL_SERVER_JSON: String = "https://files.antoninkriz.eu/apps/krizici/%s.json"
+    const val URL_SERVER_JSON: String = "http://192.168.1.2:5000/api/data/%s"
 
     /**
      * Template of URL pointing to specific image
      */
-    val URL_SERVER_IMG: (String) -> String = { input -> "https://files.antoninkriz.eu/apps/krizici/img$input-%s.png" }
+    val URL_SERVER_IMG: (String) -> String = { input -> "$input/%s" }
 
     enum class TABS(val value: String) {
         CLASSES("tridy"),
