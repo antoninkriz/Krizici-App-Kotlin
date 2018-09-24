@@ -20,6 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.GoogleApiClient
 import eu.antoninkriz.krizici.exceptions.UnknownException
@@ -43,6 +44,8 @@ class LoadingActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedL
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loading)
 
+        sign_in_button.isEnabled = false
+
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("542683906617-okqd28rumn16ni4fcfvo21dnan5dtgij.apps.googleusercontent.com")
@@ -55,6 +58,14 @@ class LoadingActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedL
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build()
+
+        // Try to login if user was already logged in
+        val account = GoogleSignIn.getLastSignedInAccount(this)
+        if (account != null) {
+            authWithServer(account)
+        } else {
+            sign_in_button.isEnabled = true
+        }
 
         sign_in_button.setOnClickListener {
             signIn()
@@ -103,27 +114,6 @@ class LoadingActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedL
         }
     }
 
-    /*private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        Log.d("FAWG", "firebaseAuthWithGoogle:" + acct.id!!)
-
-        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-        mAuth?.signInWithCredential(credential)
-                ?.addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d("FAWG", "signInWithCredential:success")
-                        Snackbar.make(loading_layout, "Logged in", Snackbar.LENGTH_SHORT).show()
-                        val user = mAuth?.currentUser
-                        checkLogin(user)
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w("FAWG", "signInWithCredential:failure", task.exception)
-                        Snackbar.make(loading_layout, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
-                        checkLogin(null)
-                    }
-                }
-    }*/
-
     override fun onBackPressed() {
         if (mBackPressed + 2000 > System.currentTimeMillis()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -162,6 +152,9 @@ class LoadingActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedL
             val activity = activityReference.get() ?: return
             val loadingLayout = activity.findViewById<RelativeLayout>(R.id.loading_layout)
 
+            val googleButton = activity.findViewById<SignInButton>(R.id.sign_in_button)
+            googleButton.isEnabled = true
+
             if (error != null) {
                 val message: String = when (error) {
                     ERROR.CAN_NOT_CONNECT -> activity.getString(R.string.error_canNotConnect)
@@ -195,7 +188,7 @@ class LoadingActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedL
 
                     if (expire > (System.currentTimeMillis() / 1000))
 
-                    Snackbar.make(loadingLayout, activity.getString(R.string.auth_ok), Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(loadingLayout, activity.getString(R.string.auth_ok), Snackbar.LENGTH_SHORT).show()
 
                     // Get required async
                     AsyncGetJson(activityReference).execute(response)

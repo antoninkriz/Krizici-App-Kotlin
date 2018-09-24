@@ -1,5 +1,7 @@
 package eu.antoninkriz.krizici.utils
 
+import eu.antoninkriz.krizici.BuildConfig
+
 object Consts {
     /**
      * Server timeout in milliseconds
@@ -19,7 +21,13 @@ object Consts {
     /**
      * Template of URL pointing to the JSON files
      */
-    const val URL_SERVER_JSON: String = "http://192.168.1.2:5000/api/data/%s"
+    fun URL_SERVER_JSON(): String {
+        return if (BuildConfig.BUILD_TYPE == "debug") {
+            "http://192.168.1.2:5000/api/data/%s"
+        } else {
+            "https://krizici.antoninkriz.eu/api/data/%s"
+        }
+    }
 
     /**
      * Template of URL pointing to specific image

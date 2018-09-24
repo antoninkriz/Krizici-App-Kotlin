@@ -19,7 +19,6 @@ import eu.antoninkriz.krizici.R
 import eu.antoninkriz.krizici.utils.Consts
 import eu.antoninkriz.krizici.utils.Network
 import java.io.ByteArrayInputStream
-import java.net.URL
 import java.util.*
 
 
@@ -61,9 +60,14 @@ class FragmentView : Fragment() {
                 val scheme = Uri.parse(url).scheme.trim()
                 if (scheme.equals("http", ignoreCase = true) || scheme.equals("https", ignoreCase = true)) {
                     try {
-                        val connection = URL(url).openConnection()
-                        connection.setRequestProperty("Authorize", "Bearer $jwt")
-                        return WebResourceResponse(connection.contentType, connection.getHeaderField("encoding"), connection.getInputStream())
+                        val response = Network.downloader(url, Network.METHOD.GET, null, jwt, null)
+                        val stream =
+                                if (response.success)
+                                    ByteArrayInputStream(response.result)
+                                else
+                                    ByteArrayInputStream(response.exception?.message?.toByteArray() ?: ByteArray(0))
+
+                        return WebResourceResponse(response.contentType, response.encoding, stream)
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
@@ -146,7 +150,7 @@ class FragmentView : Fragment() {
         spinner.setItems(list)
 
         val type: Consts.TABS = if (tabposition == 0) Consts.TABS.CLASSES else if (tabposition == 1) Consts.TABS.TEACHERS else Consts.TABS.CLASSROOMS
-        val urlFormat = String.format(Consts.URL_SERVER_JSON, Consts.URL_SERVER_IMG(type.value))
+        val urlFormat = String.format(Consts.URL_SERVER_JSON(), Consts.URL_SERVER_IMG(type.value))
 
         spinner.setOnItemSelectedListener { _, position, _, _ ->
             if (position > 0) {

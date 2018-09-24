@@ -13,6 +13,7 @@
     <string name="nav_info">Informace</string>
     <string name="nav_about">O Aplikaci</string>
 
+    <string name="auth_needed">Pro používání aplikace je nutné se přihlásit pomocí školního Google účtu\n(emailová adresa končíci "skolakrizik.cz")</string>
     <string name="auth_failed">Přihlášení selhalo</string>
     <string name="auth_accountNotInDomain">Účet nepatří do domény "skolakrizik.cz"</string>
     <string name="auth_ok">Přihlášení proběhlo úspěšně</string>
