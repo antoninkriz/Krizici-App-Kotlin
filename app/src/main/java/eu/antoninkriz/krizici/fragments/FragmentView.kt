@@ -150,7 +150,7 @@ class FragmentView : Fragment() {
         spinner.setItems(list)
 
         val type: Consts.TABS = if (tabposition == 0) Consts.TABS.CLASSES else if (tabposition == 1) Consts.TABS.TEACHERS else Consts.TABS.CLASSROOMS
-        val urlFormat = String.format(Consts.URL_SERVER_JSON(), Consts.URL_SERVER_IMG(type.value))
+        val urlFormat = String.format(Consts.URL_SERVER_JSON, Consts.URL_SERVER_IMG(type.value))
 
         spinner.setOnItemSelectedListener { _, position, _, _ ->
             if (position > 0) {

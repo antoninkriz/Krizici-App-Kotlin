@@ -12,7 +12,7 @@ object JsonHelper {
 
     @Throws(FailedDownloadException::class, UnknownException::class)
     fun getJson(downloadfile: DOWNLOADFILE, auth: String? = null, method: Network.METHOD = Network.METHOD.GET, data: String? = null): String? {
-        val url = Consts.URL_SERVER_JSON().format(downloadfile.file)
+        val url = Consts.URL_SERVER_JSON.format(downloadfile.file)
         val result = Network.downloader(url, method, data, auth, null)
 
         if (result.success) {

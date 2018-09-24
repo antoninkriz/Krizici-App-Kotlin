@@ -3,10 +3,8 @@ package eu.antoninkriz.krizici.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import android.net.SSLCertificateSocketFactory
 import android.util.Log
 import eu.antoninkriz.krizici.exceptions.network.FailedDownloadException
-import org.apache.http.conn.ssl.AllowAllHostnameVerifier
 import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.URL
@@ -24,13 +22,10 @@ object Network {
         try {
             // Init connection
             val url = URL(requestUrl)
-            val con = if (url.protocol == "https") {
-                val con = url.openConnection() as HttpsURLConnection
-                con.sslSocketFactory = SSLCertificateSocketFactory.getInsecure(0, null)
-                con.hostnameVerifier = AllowAllHostnameVerifier()
-
-                con
-            } else url.openConnection() as HttpURLConnection
+            val con = if (url.protocol == "https")
+                url.openConnection() as HttpsURLConnection
+            else
+                url.openConnection() as HttpURLConnection
 
 
             con.setRequestProperty("Content-Type", contentType ?: "application/json")

@@ -10,8 +10,8 @@ android {
         applicationId "eu.antoninkriz.krizici"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 7
-        versionName "3.1 - 🏫Back to school🔫" // <School building emoji> 🏫Back to school <Pistol>, some IDEs can not display emojis
+        versionCode 8
+        versionName "3.2 - 🏫Back to school🔫" // <School building emoji> 🏫Back to school <Pistol>, some IDEs can not display emojis
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
