@@ -1,2 +1,2 @@
 # Krizici-App-Kotlin
-Klientska aplikace pro Krizici-Server napsana v Kotlinu
+Client app for [Krizici-Server](https://github.com/antoninkriz/Krizici-Server rewritten in Kotlin
